@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Epilogue:wght@500&family=Space+Grotesk:wght@500&display=swap');
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(farthest-corner at 50% 0%,  hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.container{
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding-top: 50px;
+}
+header{
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid hsl(217, 16%, 45%);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    width: 140px;
+    color: rgb(253, 253, 253);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 1px 5px rgba(26, 26, 26, 0.418);
+}
+.score{
+    width: 300px;
+    height: 90px;
+    background-color: rgb(233, 238, 241);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 1px 1px 5px rgba(26, 26, 26, 0.568);
+}
+.player, .house{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: hsl(229, 64%, 46%);
+}
+.realScore{
+    font-size: 35px;
+    color: hsl(229, 25%, 31%);
+}
+.image{
+    width: 313px;
+    position: absolute;   
+}
+.icon{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.paper{
+
+}
+.rock{
+    
+}
+.scissors{
+
+}
