@@ -86,30 +86,31 @@ section{
                 inset -4px -4px 10px rgba(0,0,0,0.6),
                 4px 4px 15px rgba(117, 117, 117, 0.5);
 }
-.paper{
-    top: -120px;
+.paper, .c-paper{
     border: 20px solid hsl(230, 89%, 62%);
     box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
                 inset 4px 4px 10px rgba(0,0,0,0.5),
                 inset -4px -4px 10px rgba(0,0,0,0.5),
                 4px 4px 10px rgba(67,67,67,0.5);
 }
-.rock{
-    top: 120px;
+.paper{top: -120px;}
+.rock, .c-rock{
     border: 20px solid hsl(349, 71%, 52%);
     box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
                 inset 4px 4px 10px rgba(0,0,0,0.5),
                 inset -4px -4px 10px rgba(0,0,0,0.5),
                 4px 4px 10px rgba(67,67,67,0.5);
 }
-.scissors{
-    top: -120px;
+.rock{top: 120px;}
+.scissors, .c-scissors{
     border: 20px solid hsl(39, 89%, 49%);
     box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
                 inset 4px 4px 10px rgba(0,0,0,0.5),
                 inset -4px -4px 10px rgba(0,0,0,0.5),
                 4px 4px 10px rgba(67,67,67,0.5);
 }
+.scissors{top: -120px;}
+
 footer{
     width: 100%;
     display: flex;
@@ -196,6 +197,9 @@ footer{
     height: 120px;
     border-radius: 50%;
     background-color: hsl(229, 25%, 31%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 a{
     text-decoration: none;
