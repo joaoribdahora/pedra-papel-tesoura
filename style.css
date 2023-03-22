@@ -200,12 +200,42 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 15px;
 }
 a{
     text-decoration: none;
 }
 .two{
     display: none;
+}
+
+.result{
+    width: 300px;
+    display: none;
+}
+.showResult{
+    color: rgb(233, 238, 241);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+.restart{
+    width: 200px;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(233, 238, 241);
+    color: hsl(229, 25%, 31%);
+    font-size: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.restart:hover{
+    opacity: 0.6;
 }
 
 @media (max-width: 450px){
