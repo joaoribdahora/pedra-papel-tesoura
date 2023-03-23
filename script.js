@@ -2,14 +2,15 @@ let choice = '';
 let housesPoints = 0;
 let yourPoints = 0;
 
+// Rules
 document.querySelector('.rules').addEventListener('click', ()=>{
     document.querySelector('.rulesArea').style.display = 'flex';
 });
-
 document.querySelector('.title img').addEventListener('click', ()=>{
     document.querySelector('.rulesArea').style.display = 'none';
 });
 
+//Your choice
 document.querySelector('.paper').addEventListener('click', ()=>{
     choice = 'paper';
     game(choice);
@@ -23,8 +24,10 @@ document.querySelector('.scissors').addEventListener('click', ()=>{
     game(choice);
 });
 
+// Restart
 document.querySelector('.restart').addEventListener('click', restart);
 
+//Functions 
 function game(c){
     let icon = document.querySelector('.yourIcon');
 
@@ -40,85 +43,15 @@ function game(c){
     checkGame(c);
 }
 
-function checkGame(c){
-    let housesChoice = '';
-    let icon = document.querySelector('.housesIcon');
-
-    house().then(function(resultado){
-        housesChoice = resultado; 
-
-        icon.innerHTML = `<img src="images/icon-${resultado}.svg"/>`;
-        icon.classList.add(`c-${resultado}`);
-        icon.style.width = '180px';
-        icon.style.height = '180px';
-        icon.style.backgroundColor = '#FFF';
-
-        setTimeout(() => {checkWinner(housesChoice, c)} , 1000);
-    });
-}
-
-function checkWinner(housesChoice, c){
-    let result = '';
-
-    switch(c){
-        case 'paper':
-            if(housesChoice === 'paper'){
-                result = 'empate';
-                console.log('empate');
-            }
-            if(housesChoice === 'rock'){
-                result = 'ganhou';
-                console.log('Você ganhou');
-            }
-            if(housesChoice === 'scissors'){
-                result = 'perdeu';
-                console.log('Você perdeu');               
-            }
-            
-        break;
-        case 'rock': 
-            if(housesChoice === 'paper'){
-                result = 'perdeu';
-                console.log('Você perdeu');
-            }
-            if(housesChoice === 'rock'){
-                result = 'empate';
-                console.log('empate');
-            }
-            if(housesChoice === 'scissors'){
-                result = 'ganhou';
-                console.log('Você ganhou');               
-            }
-        break;
-        case 'scissors':
-            if(housesChoice === 'paper'){
-                result = 'ganhou';
-                console.log('Você ganhou');
-            }
-            if(housesChoice === 'rock'){
-                result = 'perdeu';
-                console.log('Você perdeu');
-            }
-            if(housesChoice === 'scissors'){
-                result = 'empate';
-                console.log('empate');               
-            }
-        break;
-    }
-
-    showResult(result);
-}
-
 function house(){
-    return new Promise(function(resolve, reject){
-        
+    return new Promise(function(resolve){
         document.querySelector('.housesIcon').innerHTML = "Carregando..."
+        
         setTimeout(function(){
             resolve(choosing());
         }, 1000);
     })
 }
-
 function choosing(choosenIcon){
     let housePlay = Math.floor(Math.random() * 3);
     
@@ -127,6 +60,44 @@ function choosing(choosenIcon){
     if(housePlay == 2){choosenIcon = 'scissors'};
 
     return choosenIcon;
+}
+
+function checkGame(c){
+    let icon = document.querySelector('.housesIcon');
+
+    house().then(function(resultado){
+        icon.innerHTML = `<img src="images/icon-${resultado}.svg"/>`;
+        icon.classList.add(`c-${resultado}`);
+        icon.style.width = '180px';
+        icon.style.height = '180px';
+        icon.style.backgroundColor = '#FFF';
+
+        setTimeout(() => {checkWinner(resultado, c)} , 1000);
+    });
+}
+
+function checkWinner(housesChoice, c){
+    let result = '';
+
+    switch(c){
+        case 'paper':
+            if(housesChoice === 'paper') result = 'empate';
+            if(housesChoice === 'rock')  result = 'ganhou';
+            if(housesChoice === 'scissors') result = 'perdeu';
+        break;
+        case 'rock': 
+            if(housesChoice === 'paper') result = 'perdeu';
+            if(housesChoice === 'rock') result = 'empate';
+            if(housesChoice === 'scissors') result = 'ganhou';
+        break;
+        case 'scissors':
+            if(housesChoice === 'paper') result = 'ganhou';
+            if(housesChoice === 'rock') result = 'perdeu';
+            if(housesChoice === 'scissors') result = 'empate';
+        break;
+    }
+
+    showResult(result);
 }
 
 function showResult(r){
@@ -138,10 +109,12 @@ function showResult(r){
     if( r === 'ganhou'){
         icon.innerHTML = 'VOCÊ GANHOU!';
         yourPoints++;
+        document.querySelector('.housesIcon').style.opacity = '0.3';
     }
     if( r === 'perdeu'){
         icon.innerHTML = 'VOCÊ PERDEU!';
         housesPoints++;
+        document.querySelector('.yourIcon').style.opacity = '0.3';
     }
 
     document.querySelector('.player .realScore').innerHTML = yourPoints;
@@ -153,20 +126,16 @@ function restart(){
     document.querySelector('.two').style.display = 'none';
     document.querySelector('.result').style.display = 'none';
     
-    let youricon = document.querySelector('.yourIcon');
-    let housesicon = document.querySelector('.housesIcon');
+    let icons = [ document.querySelector('.yourIcon'), document.querySelector('.housesIcon')];
+   
+    for(let i = 0; i<icons.length; i++){
+        icons[i].classList.remove('c-paper');
+        icons[i].classList.remove('c-rock');
+        icons[i].classList.remove('c-scissors');
 
-    housesicon.classList.remove('c-paper');
-    housesicon.classList.remove('c-rock');
-    housesicon.classList.remove('c-scissors');
-    youricon.classList.remove('c-paper');
-    youricon.classList.remove('c-rock');
-    youricon.classList.remove('c-scissors');
-
-    housesicon.style.width = '120px';
-    housesicon.style.height = '120px';
-    housesicon.style.backgroundColor = 'hsl(229, 25%, 31%)';
-    youricon.style.width = '120px';
-    youricon.style.height = '120px';
-    youricon.style.backgroundColor = 'hsl(229, 25%, 31%)';
+        icons[i].style.opacity = '1';
+        icons[i].style.width = '120px';
+        icons[i].style.height = '120px';
+        icons[i].style.backgroundColor = 'hsl(229, 25%, 31%)';
+    }
 }

@@ -191,6 +191,7 @@ footer{
     font-size: 25px;
     letter-spacing: 1px;
     padding-bottom: 80px;
+    margin-top: 30px;
 }
 .yourIcon, .housesIcon{
     width: 120px;
@@ -237,7 +238,18 @@ a{
 .restart:hover{
     opacity: 0.6;
 }
+@media (max-width: 740px){
+    .two{
+        height: 900px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
 
+.yourChoice, .housesChoice{
+    padding-bottom: 30px;
+}
+}
 @media (max-width: 450px){
     .container{
         max-width: 450px; 
